@@ -4,7 +4,7 @@ import Select from '../form/Select';
 import SubmitButton from '../form/SubmitButton';
 import { useEffect, useState } from 'react';
 
-export default function ProjectForm({ btnText }) {
+export default function ProjectForm({handleSubmit, btnText, projectData }) {
     const [categories, setCategories] = useState([])
 
     useEffect(() => {
