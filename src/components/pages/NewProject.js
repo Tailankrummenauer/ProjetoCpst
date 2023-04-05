@@ -1,10 +1,11 @@
 import style from './NewProject.module.css';
 import ProjectForm from '../project/ProjectForm';
-import { useHistory } from 'react-router-dom'
+import { useNavigate} from 'react-router-dom';
 
 
 function NewProject() {
-    const history = useHistory()
+    const navigate = useNavigate();
+
 
     function createPost(project) {
         //inicializando costs and services
@@ -12,7 +13,7 @@ function NewProject() {
         project.cost = 0
         project.services = []
 
-        fetch("http:/localhost:5000/projects", {
+        fetch("http://localhost:5000/projects", {
             method: "POST",
             headers: {
                 'Content-type': 'application/json',
@@ -22,6 +23,7 @@ function NewProject() {
             .then((data) => {
                 console.log(data)
                 //redirect
+                navigate('/projects', {message: 'Projeto criado com sucesso!'})
             })
 
             .catch((error) => console.log(error))
